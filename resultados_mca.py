@@ -239,23 +239,23 @@ with st.sidebar:
     if selected_norm == 'Núm. noticias':
         type_size = 'ts'
         indices = pd.read_csv('./Indicadores_num_not.csv',index_col = 'Semana',parse_dates=True)
-        with open("./Medidas_num_not.pickle", "rb") as fp:
-            Matrix = pickle.load(fp)
+        if selected_criterio == 'DTW':
+            M_coef = pd.read_csv('./Matriz_DTW.csv',index_col = 'Escala')
+        elif selected_criterio == 'CG':
+            M_coef = pd.read_csv('./Matriz_CG.csv',index_col = 'Escala')
+        else:
+            M_coef = pd.read_csv('./Matriz_CSE.csv',index_col = 'Escala')
 
     else:
         type_size = 'mx'
         indices = pd.read_csv('./Indicadores_max_min.csv',index_col = 'Semana',parse_dates=True)
-        with open("./Medidas_max_min.pickle", "rb") as fp:
-            Matrix = pickle.load(fp)
-            
+        if selected_criterio == 'DTW':
+            M_coef = pd.read_csv('./Matriz_DTW_MaxMin.csv',index_col = 'Escala')
+        elif selected_criterio == 'CG':
+            M_coef = pd.read_csv('./Matriz_CG_MaxMin.csv',index_col = 'Escala')
+        else:
+            M_coef = pd.read_csv('./Matriz_CSE_MaxMin.csv',index_col = 'Escala')
 
-    if selected_criterio == 'DTW':
-        M_coef = Matrix[0]
-    elif selected_criterio == 'CG':
-        M_coef = Matrix[1]
-    else:
-        M_coef = Matrix[2]
-        
 #######################
 #Data import
 

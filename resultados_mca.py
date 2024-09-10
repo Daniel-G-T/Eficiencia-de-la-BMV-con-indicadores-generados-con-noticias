@@ -229,7 +229,7 @@ with st.sidebar:
     st.title('Eficiencia de la BMV con base en indicadores de noticias')   
     
     selected_criterio = 'DTW'
-    selected_criterio = st.selectbox('Selecciona el criterio', ['DTW','CG','CSE']) 
+    selected_criterio = st.selectbox('Selecciona un criterio', ['DTW','CG','CSE']) 
     
     selected_norm = 'Núm. noticias'
     selected_norm = st.selectbox('Selecciona la estandarización', ['Núm. noticias','MAX-MIN']) 
@@ -298,7 +298,7 @@ with col[0]:
     
 with col[1]:
     
-    st.markdown('#### Relación entre exponentes e indicadaores')
+    st.markdown('#### Relación entre exponentes e indicadores')
     treemap = make_matrix_dist(M_coef,indices.columns)
     st.plotly_chart(treemap, use_container_width=True)  
 
